@@ -2,6 +2,9 @@
   "firebase": "dazzling-torch-2985",
   "public": ".",
   "ignore": [
-    "firebase.json"
+    "firebase.json",
+    ".DS_Store",
+    "**/git/**",
+    "package.json"
   ]
 }
