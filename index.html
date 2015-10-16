@@ -14,13 +14,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body ng-app="myApp">
-    <div class="row">
-      <div class="col-sm-11">
-        <h1>Wish Board</h1>
+    <div class="page-container">
+      <div class="row">
+        <div class="col-sm-11">
+          <h1>Wish Board</h1>
+        </div>
       </div>
+
+      <div ng-view></div>
     </div>
 
-    <div ng-view></div>
 
     <!-- Modules -->
     <script src="js/app.js"></script>

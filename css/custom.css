@@ -4,9 +4,14 @@
   border-right: 15px solid #fff;
   border-top: 20px solid #fff;
   border-bottom: 20px solid #fff;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
   padding-top: 5px;
 }
+
+.page-container {
+  padding: 15px;
+}
+
 .col-sm-12 {
   border-style: solid;
   border-width:1px;

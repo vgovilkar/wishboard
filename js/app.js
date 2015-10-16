@@ -9,7 +9,7 @@ var app = angular
     })
     .when('/main', {
       templateUrl: 'views/lists.html',
-      controller: 'MainController',
+      controller: 'DashboardController',
     })
     .otherwise({
       templateUrl: 'views/login.html',

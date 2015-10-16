@@ -1,13 +1,22 @@
 
-app.controller('MainController', ['$scope', 'Lists', 'Elements',
-  function($scope, Lists, Elements) {
-    $scope.lists = Lists("lists");
-    $scope.elementsBind = [];
-    $scope.lists.$loaded().then(function(lists) {
-      angular.forEach($scope.lists, function(value, key) {
-        $scope.elementsBind.push(Elements("lists", value.$id));
+app.controller('DashboardController', ['$scope', '$rootScope',
+                                        'Lists', 'Elements', 'Dashboards',
+  function($scope, $rootScope, Lists, Elements, Dashboards) {
+    $scope.dashboards = Dashboards($rootScope.authData.uid);
+    $scope.dashboards.$loaded().then(function(dashboards) {
+      angular.forEach($scope.dashboards, function(value, key) {
+        $scope.dashBoardName = value.$value;
+      });
+      $scope.lists = Lists($scope.dashBoardName);
+      $scope.elementsBind = [];
+      $scope.lists.$loaded().then(function(lists) {
+        angular.forEach($scope.lists, function(value, key) {
+          $scope.elementsBind.push(Elements($scope.dashBoardName, key));
+        });
       });
     });
+
+
 
     $scope.addItem = function(index) {
       var list = $scope.lists[index];

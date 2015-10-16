@@ -1,10 +1,12 @@
-app.controller("LoginController", ["$scope", "Auth", "$location",
-  function($scope, Auth, $location) {
+app.controller("LoginController", ["$scope", "$rootScope", "Auth", "$location",
+  function($scope, $rootScope, Auth, $location) {
     $scope.auth = Auth;
 
     $scope.auth.$onAuth(function(authData) {
-      $scope.authData = authData;
-      $location.path('/main')
+      $rootScope.authData = authData;
+      if ($rootScope.authData) {
+        $location.path('/main');
+      }
     });
   }
 ]);
