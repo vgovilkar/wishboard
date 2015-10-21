@@ -8,8 +8,8 @@ var app = angular
       controller: 'LoginController',
     })
     .when('/main', {
-      templateUrl: 'views/lists.html',
-      controller: 'DashboardController',
+      templateUrl: 'views/mainview.html',
+      controller: 'MainController',
     })
     .otherwise({
       templateUrl: 'views/login.html',
