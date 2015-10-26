@@ -11,10 +11,7 @@ var app = angular
       templateUrl: 'views/mainview.html',
       controller: 'MainController',
     })
-    .otherwise({
-      templateUrl: 'views/login.html',
-      controller: 'LoginController',
-    });;
+    .otherwise({ redirectTo: '/login' });;
 
     $locationProvider.html5Mode({
       enabled: true,

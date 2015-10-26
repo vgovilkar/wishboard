@@ -1,6 +1,15 @@
 {
   "firebase": "dazzling-torch-2985",
   "public": ".",
+  "rewrites": [ {
+    "source": "**",
+    "destination": "/index.html"
+  } ],
+  "redirects": [ {
+    "source": "/main",
+    "destination": "/",
+    "type" : 301
+  } ],
   "ignore": [
     "firebase.json",
     ".DS_Store",
