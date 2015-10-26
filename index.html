@@ -16,8 +16,11 @@
   <body ng-app="myApp">
     <div class="page-container">
       <div class="row">
-        <div class="col-sm-11">
-          <h1>Wish Board</h1>
+        <div class="col-sm-6">
+          <h1>SticknShare</h1>
+        </div>
+        <div class="col-sm-6" ng-show="authData" ng-controller="LoginController">
+          <button ng-click="auth.$unauth()">Logout</button>
         </div>
       </div>
 

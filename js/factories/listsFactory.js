@@ -1,8 +1,23 @@
 app.factory("Dashboards", ["$firebaseArray", function($firebaseArray) {
-    return function(user_id) {
+    return function(authData) {
       var ref = new Firebase("https://dazzling-torch-2985.firebaseio.com/");
-      var dashboardListRef = ref.child("Users").child(user_id);
+      var dashboardListRef = ref.child("Users").child(authData.uid);
+      dashboardListRef.once("value", function(snapshot) {
+        var a = snapshot.exists();
+        if (a==false) {
+          createNewUserData(authData, ref, dashboardListRef);
+        }
+      })
       return $firebaseArray(dashboardListRef);
+    }
+}]);
+
+app.factory("DashboardName", ["$firebaseObject", function($firebaseObject) {
+  return function(dashboard_id) {
+      var ref = new Firebase("https://dazzling-torch-2985.firebaseio.com/");
+      var ref = ref.child(dashboard_id).child("dName");
+      // return it as a synchronized object
+      return $firebaseObject(ref);
     }
 }]);
 
@@ -21,3 +36,33 @@ app.factory("Elements", ["$firebaseArray", function($firebaseArray) {
     return $firebaseArray(listsRef);
   }
 }]);
+
+function createNewUserData(authData, baseRef, dashboardListRef ) {
+  var dblist = {};
+  dblist["0"] = "D" + authData.uid;
+  dashboardListRef.set(dblist);
+
+  dbobj = {};
+  dbobj["dName"] = "Sample Dashboard";
+  console.log(authData.facebook.displayName );
+  dbobj[authData.uid] = authData.facebook.displayName;
+  dbobj["lists"] = {
+    "0" : {
+      "elements" : {
+        "0" : "McMagic",
+        "1" : "Amazing Pizza Place"
+      },
+      "name" : "Restaurants"
+    },
+    "1" : {
+      "elements" : {
+        "0" : "Yosimitte",
+        "1" : "Yellowstone"
+      },
+      "name" : "Hikes"
+    }
+  };
+
+  dashboardRef = baseRef.child(dblist["0"]);
+  dashboardRef.set(dbobj);
+}

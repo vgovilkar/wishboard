@@ -1,13 +1,13 @@
 
 app.controller('DashboardController', ['$scope', '$rootScope', '$attrs',
-                                'Lists', 'Elements',
-    function($scope, $rootScope, $attrs, Lists, Elements) {
-      
-      $scope.lists = Lists($scope.dashboardname);
+                                'Lists', 'Elements', 'DashboardName',
+    function($scope, $rootScope, $attrs, Lists, Elements, DashboardName) {
+      $scope.dName = DashboardName($scope.dashboardid);
+      $scope.lists = Lists($scope.dashboardid);
       $scope.elementsBind = [];
       $scope.lists.$loaded().then(function(lists) {
         angular.forEach($scope.lists, function(value, key) {
-          $scope.elementsBind.push(Elements($scope.dashboardname, key));
+          $scope.elementsBind.push(Elements($scope.dashboardid, key));
         });
       });
 
@@ -30,7 +30,7 @@ app.controller('DashboardController', ['$scope', '$rootScope', '$attrs',
           listObject["name"] = $scope.newListTextAdd;
         }
         $scope.lists.$add(listObject).then(function(ref) {
-          $scope.elementsBind.push(Elements("lists", ref.key()));
+          $scope.elementsBind.push(Elements($scope.dashboardid, ref.key()));
         });
       };
 
