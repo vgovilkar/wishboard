@@ -1,13 +1,15 @@
 <div class="dashboard-border">
   <div class="row">
     <div class="col-sm-11">
-      <h3> {{ dName.$value }} </h3>
+      <h3 href="#" style="border-bottom: none"editable-text="dashboardObject.dName" e-style="color: green" e-required e-placeholder="Enter dashboard name">
+        {{ (dashboardObject.dName || 'empty') }}
+      </h3>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-4" ng-repeat-start="list in lists">
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12" style="background-color: #FFFCDE">
           <div class="row">
             <div class="col-xs-10">
               <h3> {{ list.name }} </h3>
@@ -20,7 +22,7 @@
           </div>
 
           <ul class="list-group">
-            <li class="list-group-item" ng-repeat="element in list.elements">
+            <li class="list-group-item" ng-repeat="element in list.elements" style="background-color: #fff">
               <div class="row">
                 <div class="col-xs-10">
                   <h5> {{element}} </h5>

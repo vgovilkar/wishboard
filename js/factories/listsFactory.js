@@ -12,10 +12,10 @@ app.factory("Dashboards", ["$firebaseArray", function($firebaseArray) {
     }
 }]);
 
-app.factory("DashboardName", ["$firebaseObject", function($firebaseObject) {
+app.factory("DashboardObject", ["$firebaseObject", function($firebaseObject) {
   return function(dashboard_id) {
       var ref = new Firebase("https://dazzling-torch-2985.firebaseio.com/");
-      var ref = ref.child(dashboard_id).child("dName");
+      var ref = ref.child(dashboard_id);
       // return it as a synchronized object
       return $firebaseObject(ref);
     }

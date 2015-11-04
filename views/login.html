@@ -1,10 +1,6 @@
 <div class="container-fluid">
-  <div ng-show="authData">
-    <p>Hello </p>
-    <button ng-click="auth.$unauth()">Logout</button>
-  </div>
   <div ng-hide="authData">
     <p>Welcome, please log in.</p>
-    <button ng-click="auth.$authWithOAuthPopup('facebook')">Login With Facebook</button>
+    <button class="btn btn-default" ng-click="auth.$authWithOAuthPopup('facebook')">Login With Facebook</button>
   </div>
 </div>

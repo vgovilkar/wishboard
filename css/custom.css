@@ -16,6 +16,7 @@
   padding: 15px;
   border-style: solid;
   border-width:1px;
+  background-color: #fff;
 }
 
 .col-sm-12 {
@@ -23,6 +24,10 @@
   border-width:1px;
   border-radius: 20px;
   padding-bottom: 40px;
+}
+
+.li {
+  background-color: #FFF238;
 }
 
 .add {
