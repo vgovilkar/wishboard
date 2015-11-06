@@ -1,6 +1,21 @@
 <div class="container-fluid">
   <div ng-hide="authData">
-    <p>Welcome, please log in.</p>
-    <button class="btn btn-default" ng-click="auth.$authWithOAuthPopup('facebook')">Login With Facebook</button>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6">
+          <p>Welcome to SticknShare.</p>
+          <p>To create and share personal pinboards please login with facebook</p>
+          <button class="btn btn-primary" ng-click="auth.$authWithOAuthPopup('facebook')">Login With Facebook</button>
+        </div>
+        <div class="col-sm-6">
+          <p>Create custom Pinboards and share them with your friends and family</p>
+          <p>You can 'pin'(create) multiple lists onto each Pinboard</p>
+          <p>Interact with the 'communal' pinboard bellow that is accessible to everyone</p>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 20px;">
+      <dashboard dashboardid= "dashboardforall" ></dashboard>
+    </div>
+  </div>
   </div>
 </div>

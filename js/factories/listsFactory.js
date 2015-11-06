@@ -43,7 +43,7 @@ function createNewUserData(authData, baseRef, dashboardListRef ) {
   dashboardListRef.set(dblist);
 
   dbobj = {};
-  dbobj["dName"] = "Sample Dashboard";
+  dbobj["dName"] = "Sample Pinboard";
   console.log(authData.facebook.displayName );
   dbobj[authData.uid] = authData.facebook.displayName;
   dbobj["lists"] = {
